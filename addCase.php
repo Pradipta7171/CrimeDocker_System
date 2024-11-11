@@ -57,7 +57,17 @@ ob_start();
             <div class="addCaseContainer flex">
 
               <div class="rowsDiv">
-              <form action="" method="POST" enctype="multipart/form-data">   
+              <form action="" method="POST" enctype="multipart/form-data">  
+
+                <div class="row">
+                    <label for="id">Id</label>
+                    <input type="number" name="id" id="id" value="1" required>
+                </div>
+                <div class="row">
+                  <label for="incident_id">Incident Id</label>
+                  <input type="number" name="incident_id" id="incident_id" value="1" required>
+                </div>
+
 
                 <div class="row">
                     <label for="incType">Incident Type</label></label>
@@ -222,6 +232,9 @@ ob_start();
 
 
     // get input through variables
+     // Fetch ID from database
+     $id = $_POST['id'];
+     $incidentId = $_POST['incident_id'];
      $incidentType = $_POST['incType'];
      $location = $_POST['location'];
      $incTime = $_POST['incTime'];
@@ -327,6 +340,8 @@ ob_start();
 
 
      $sql = "INSERT INTO cases_table SET
+              id = '$id',
+              incident_id = '$incidentId',
              incident_type = '$incidentType',
              location = '$location',
              incident_date = '$incDate',      
